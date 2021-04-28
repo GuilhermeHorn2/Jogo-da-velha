@@ -1,0 +1,24 @@
+from tryy2 import criarBoard,printBoard,getInputValido,verificaMovimento,fazMovimento,verificarGanhador
+
+board = criarBoard()
+jogador = 0
+ganhador =  verificarGanhador(board)
+while not ganhador:
+    printBoard(board)
+    i = getInputValido('Digite a linha:')
+    j = getInputValido('Digite a coluna:')
+    print()
+
+    if verificaMovimento(board,i,j):
+        fazMovimento(board,i,j,jogador)
+        jogador = (jogador + 1)%2 # vai ficar trocando entre 0 e 1,começa em 0,0 e par resto 1,1 e impar resto 1...
+    else:
+        print('Jogada invalida')
+
+    ganhador = verificarGanhador(board)
+
+print('==================')
+print(board)
+print('O ganhador é:',ganhador)
+
+
